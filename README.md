@@ -66,6 +66,7 @@ PostgreSQL database running in a separate container with tables for:
 
 ## Structure
 
+```
 job-flow/
 ├── .gitignore
 ├── README.md
@@ -102,3 +103,4 @@ job-flow/
     ├── test_scrapers.py
     ├── test_evaluators.py
     └── test_database.py
+```
