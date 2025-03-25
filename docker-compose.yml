@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  database:
+    build: ./docker/database
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-jobflow}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+      POSTGRES_DB: ${POSTGRES_DB:-jobflow}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  scraper:
+    build: ./docker/scraper
+    depends_on:
+      - database
+    env_file:
+      - .env
+    volumes:
+      - ./src:/app/src
+    command: ["python", "-m", "src.run_scraper"]
+
+  evaluator:
+    build: ./docker/evaluator
+    depends_on:
+      - database
+    env_file:
+      - .env
+    volumes:
+      - ./src:/app/src
+    command: ["python", "-m", "src.run_evaluator"]
+
+volumes:
+  postgres_data:
