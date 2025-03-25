@@ -1,0 +1,28 @@
+# Web scraping dependencies
+selenium>=4.10.0
+bs4>=0.0.1
+webdriver-manager>=3.8.6
+
+# Configuration management
+python-dotenv>=1.0.0
+
+# Database dependencies
+sqlalchemy>=2.0.0
+
+# Testing
+pytest>=8.0.0
+pytest-cov>=4.1.0
+
+# Scraper dependencies
+linkedin_scraper
+
+# LLM Evaluator dependencies
+requests
+langchain
+openai
+
+# General dependencies
+fastapi
+uvicorn
+psycopg2-binary
+beautifulsoup4

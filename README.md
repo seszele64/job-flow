@@ -63,3 +63,42 @@ PostgreSQL database running in a separate container with tables for:
 ## Usage
 
 *[To be added: usage examples]*
+
+## Structure
+
+job-flow/
+├── .gitignore
+├── README.md
+├── requirements.txt
+├── docker-compose.yml
+├── .env.example
+├── src/
+│   ├── config/
+│   │   └── settings.py         # Centralized settings management
+│   ├── scrapers/
+│   │   ├── __init__.py
+│   │   ├── base.py             # Base scraper interface
+│   │   └── linkedin_scraper.py # LinkedIn implementation
+│   ├── evaluators/
+│   │   ├── __init__.py
+│   │   ├── base.py             # Base evaluator interface
+│   │   └── openrouter.py       # OpenRouter implementation
+│   ├── database/
+│   │   ├── __init__.py
+│   │   ├── models.py           # Database schema definition
+│   │   └── operations.py       # Database operations
+│   └── utils/
+│       ├── __init__.py
+│       └── webdriver.py        # Browser utilities
+├── docker/
+│   ├── database/
+│   │   ├── Dockerfile
+│   │   └── init.sql
+│   ├── scraper/
+│   │   └── Dockerfile
+│   └── evaluator/
+│       └── Dockerfile
+└── tests/
+    ├── test_scrapers.py
+    ├── test_evaluators.py
+    └── test_database.py
